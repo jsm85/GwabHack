@@ -17,7 +17,9 @@ app.get('/', function(req, res, next){
 
 	marvel.getCharactersById(1009351 , function(err, resp) {
 	    res.render('Index', { PageName: 'GwabHack', HulkDescription: resp.data.results[0].description,
-	    HulkImage: resp.data.results[0].thumbnail.path + '/portrait_xlarge.' + resp.data.results[0].thumbnail.extension});
+	    HulkImage: resp.data.results[0].thumbnail.path + '/portrait_xlarge.' + resp.data.results[0].thumbnail.extension,
+	    HulkComics: resp.data.results[0].comics.available,
+	    HulkSeries: resp.data.results[0].series.available});
 	});
 });
 
