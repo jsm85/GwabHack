@@ -1,22 +1,11 @@
 var palette = ['#B5BBBE', '#4A6571', '#47BCF3', '#5A5D5E', '#3AF36A','#004971'];
 
-function databaseTargetsChart(requestTargets){
+function chartjsTest(requestTargets){
     var dataSource = [];
 
-    for (var requestCount = requestTargets.length - 1; requestCount >= 0; requestCount--) {
-        var databaseExists = false;
-        for (var databaseCount = dataSource.length - 1; databaseCount >= 0; databaseCount--) {
-            if (requestTargets[requestCount].Database === dataSource[databaseCount].Name ) {
-                dataSource[databaseCount].val++;
-                databaseExists = true;
-                break;
-            }
-        }
-        if (!databaseExists) dataSource.push({ Name: requestTargets[requestCount].Database, val: 1 });
-    }
 
     $('#id').dxPieChart({
-        palette: instaApiPalette,
+        palette: palette,
         dataSource: dataSource,
         title: '',
         tooltip: {

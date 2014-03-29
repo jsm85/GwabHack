@@ -9,17 +9,18 @@ div.col-xs-6.col-sm-6.col-md-6.col-lg-6
 
 div.seperator
     button.btn.btn-primary(style="width:100px; height:100px;")#socketIOtest
-
-div
-    span#testResult
+div.jumbotron
+    button.btn.btn-primary(style="width:100px; height:100px;")
 
 include Shared/scripts.jade
 script(src='Project/Javascript/index.js')
 
-
 script.
+    var socket = io.connect('/');
 
-    var socket = io.connect('http://localhost:3000');
+    socket.on('newConnection', function(data){
+        toastr.info('A new user has joined! ' + data.connectedUsers + ' users connected!');
+    });
 
     $('#socketIOtest').on('click', function(){
         socket.emit('socketIOtest');

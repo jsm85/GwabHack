@@ -10,7 +10,7 @@ app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
 
 app.get('/', function(req, res, next){
-	res.render('Index', { PageName: 'GWAB Hack' });
+	res.render('Index', { PageName: 'GwabHack' });
 });
 
 var server = app.listen(process.env.port, function() {
