@@ -13,7 +13,7 @@ app.get('/', function(req, res, next){
 	res.render('Index', { PageName: 'GWAB Hack' });
 });
 
-var server = app.listen(3000, function() {
+var server = app.listen(process.env.port, function() {
     console.log('Listening on port %d', server.address().port);
 });
 
