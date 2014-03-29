@@ -3,6 +3,8 @@
   "description": "Hack site for Windows Azure Bootcamp",
   "version": "0.0.1",
   "dependencies": {
-    "express": "3.x"
+    "express": "3.x",
+    "jade": "~1.3.0",
+    "socket.io": "~0.9.16"
   }
 }

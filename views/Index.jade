@@ -1,0 +1,29 @@
+doctype html
+
+head
+include Shared/css.jade
+
+body
+div.col-xs-6.col-sm-6.col-md-6.col-lg-6
+    h1.titleBanner #{PageName}
+
+div.seperator
+    button.btn.btn-primary(style="width:100px; height:100px;")#socketIOtest
+
+div
+    span#testResult
+
+include Shared/scripts.jade
+script(src='Project/Javascript/index.js')
+
+
+script.
+
+    var socket = io.connect('http://localhost:3000');
+
+    $('#socketIOtest').on('click', function(){
+        socket.emit('socketIOtest');
+        console.log('clicked');
+    });
+
+    
