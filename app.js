@@ -28,14 +28,18 @@ else
 
 var avengersList = 
 [
-1009351, //Hulk
-1009220, //Captain America
-1009368, //Iron Man
-1009664, //Thor
-1009189, //Black Widow
-1009471, //Nick Fury
-1009338  //Hawkeye
+{Id:1009351, Row:1, Column:1}, //Hulk
+{Id:1009220, Row:1, Column:2}, //Captain America
+{Id:1009368, Row:1, Column:3}, //Iron Man
+{Id:1009664, Row:1, Column:4}, //Thor
+{Id:1009189, Row:2, Column:1}, //Black Widow
+{Id:1009471, Row:2, Column:2}, //Nick Fury
+{Id:1009338, Row:2, Column:3}  //Hawkeye
 ]
+
+	rowCounter = 1;
+	columnCounter = 0;
+	itemsPerRow = 4;
 
 app.get('/', function(req, res, next){
 
@@ -50,10 +54,13 @@ app.get('/', function(req, res, next){
 	    	privateKey:privateKey
 	    });
 
-    	async.eachSeries(avengersList, function(item, callback){    	
-			marvel.getCharactersById(item , function(err, resp) {
-			    var character = 
+    	async.eachSeries(avengersList, function(item, callback){
+    		
+			marvel.getCharactersById(item.Id, function(err, resp) {
+				var character = 
 			    { 
+			    	DataRow: item.Row,
+			    	DataColumn: item.Column,
 			    	CharacterName: resp.data.results[0].name,
 			    	ChatacterDescription: resp.data.results[0].description,
 			    	CharacterImage: resp.data.results[0].thumbnail.path + '/portrait_xlarge.' + resp.data.results[0].thumbnail.extension,

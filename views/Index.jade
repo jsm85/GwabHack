@@ -13,10 +13,23 @@ div.container
     section.gridsterArea
         div.gridster
             ul(style="width: 960px; position: relative;")
-                each item, i in Characters            
-                    li(data-row="#{i + 1}" data-col="1" data-sizex="1" data-sizey="1" class="gw-s" style="background-image:url(#{item.CharacterImage})")
-                        span.gs-resize-handle.gs-resize-handle-both
+                each item in Characters            
+                    li(data-row="#{item.DataRow}" data-col="#{item.DataColumn}" data-sizex="1" data-sizey="1" class="gw-s" style="background-image:url(#{item.CharacterImage})")
+                        span
+                            a(href='mymodal' data-toggle="modal")
 
+//Modal
+div#myModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
+    div.modal-dialog
+        div.modal-content
+          div.modal-header
+            button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
+            h4#myModalLabel.modal-title Modal title
+          div.modal-body
+            | hello
+          div.modal-footer
+            button.btn.btn-default(type='button', data-dismiss='modal') Close
+            button.btn.btn-primary(type='button') Save changes
 
 include Shared/scripts.jade
 script(src='Project/Javascript/index.js')
@@ -29,10 +42,15 @@ script.
         gridster = $(".gridster > ul").gridster({
             widget_margins: [10, 10],
             widget_base_dimensions: [140, 140],
-            min_cols: 6,
+            min_cols: 4,
             resize: {
-                enabled: true
+                enabled: false
             }
         }).data('gridster');
 
+    });
+
+script.
+    $(document).on("dblclick", ".gw-s", function(){
+        $('#myModal').modal('toggle');
     });
