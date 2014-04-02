@@ -4,32 +4,35 @@ head
 include Shared/css.jade
 
 body
-div.col-xs-6.col-sm-6.col-md-6.col-lg-6
-    h1.titleBanner #{PageName}
+div.navbar.navbar-default.navbar-fixed-top
+    div.container
+        div.navbar-header
+            a.navbar-brand G.W.A.B Hack
 
-div.seperator
-    h1 The Hulk!
-    img(src='#{HulkImage}')
-    p  #{HulkDescription}
-    h2 Stats
-    p Comics: #{HulkComics}
-    p Series: #{HulkSeries}
-div.jumbotron
+div.container
+    section.gridsterArea
+        div.gridster
+            ul(style="width: 960px; position: relative;")
+                each item, i in Characters            
+                    li(data-row="#{i + 1}" data-col="1" data-sizex="1" data-sizey="1" class="gw-s" style="background-image:url(#{item.CharacterImage})")
+                        span.gs-resize-handle.gs-resize-handle-both
 
 
 include Shared/scripts.jade
 script(src='Project/Javascript/index.js')
 
 script.
-    var socket = io.connect('/');
+    var gridster;
 
-    socket.on('newConnection', function(data){
-        toastr.info('A new user has joined! ' + data.connectedUsers + ' users connected!');
+    $(function(){
+
+        gridster = $(".gridster > ul").gridster({
+            widget_margins: [10, 10],
+            widget_base_dimensions: [140, 140],
+            min_cols: 6,
+            resize: {
+                enabled: true
+            }
+        }).data('gridster');
+
     });
-
-    $('#socketIOtest').on('click', function(){
-        socket.emit('socketIOtest');
-        console.log('clicked');
-    });
-
-    
