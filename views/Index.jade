@@ -15,8 +15,6 @@ div.container
             ul(style="width: 960px; position: relative;")
                 each item in Characters            
                     li(data-row="#{item.DataRow}" data-col="#{item.DataColumn}" data-sizex="1" data-sizey="1" class="gw-s" style="background-image:url(#{item.CharacterImage})")
-                        span
-                            a(href='mymodal' data-toggle="modal")
 
 //Modal
 div#myModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
