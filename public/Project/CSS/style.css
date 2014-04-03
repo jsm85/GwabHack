@@ -8,7 +8,7 @@
 
 .gridsterArea {
 	margin: 3em 0;
-	padding: 7.5em 0 5.5em;
+	padding: 1.5em 0 5.5em;
 }
 
 .gridster {
@@ -18,4 +18,25 @@
 
 ul {
 	list-style: none;
+}
+
+
+/*============== Table ===============*/
+.row-description{
+	width: 15%;
+	text-align: left;
+	vertical-align: top;
+}
+
+.row-data{
+	width: 85%;
+}
+
+/*============== Site Text ===========*/
+body{
+	padding-top: 45px;
+}
+
+.main-text{
+	text-align: center;
 }

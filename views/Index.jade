@@ -7,9 +7,11 @@ body
 div.navbar.navbar-default.navbar-fixed-top
     div.container
         div.navbar-header
-            a.navbar-brand G.W.A.B Hack
+            a.navbar-brand
+                b G.W.A.B Hack
 
 div.container
+    h4.main-text Welcome to G.W.A.B Hack. A website that was put together in a couple of hours at the Global Windows Azure Bootcamp in London on the 29th March 2014. This site was built using Nodejs, the Marvel API and is hosted on Windows Azure. Double click on a character to find out more information!
     section.gridsterArea
         div.gridster
             ul(style="width: 960px; position: relative;")
@@ -22,12 +24,24 @@ div#myModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLab
         div.modal-content
           div.modal-header
             button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
-            h4#myModalLabel.modal-title
+            h4.modal-title 
           div.modal-body
-            #name
-            #description
-            #comics
-            #series
+            table
+                tr
+                    td.row-description
+                        b Description
+                    td.row-data
+                        #description
+                tr
+                    td.row-description
+                        b # of Comics
+                    td.row-data
+                        #comics
+                tr
+                    td.row-description
+                        b # of Series
+                    td.row-data
+                        #series
           div.modal-footer
             button.btn.btn-default(type='button', data-dismiss='modal') Close
 
@@ -57,7 +71,7 @@ script.
         var comics = $(this).data('comics');
         var series = $(this).data('series');
         
-        $("#myModelLabel").val( name );
+        $("h4.modal-title").text( name );
         $(".modal-body #description").html( description );
         $(".modal-body #comics").html( comics );
         $(".modal-body #series").html( series );
