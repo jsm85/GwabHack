@@ -14,7 +14,7 @@ app.set('view engine', 'jade');
 var publicKey = "";
 var privateKey = "";
 
-if(process.env.MARVEL_API_PUBLIC == undefined)
+if(process.env.MARVEL_API_PUBLIC === undefined)
 {
 	var secrets = require('./secrets.json');
 	publicKey = secrets.publicKey;
@@ -28,18 +28,15 @@ else
 
 var avengersList = 
 [
-{Id:1009351, Row:1, Column:1}, //Hulk
-{Id:1009220, Row:1, Column:2}, //Captain America
-{Id:1009368, Row:1, Column:3}, //Iron Man
-{Id:1009664, Row:1, Column:4}, //Thor
-{Id:1009189, Row:2, Column:1}, //Black Widow
-{Id:1009471, Row:2, Column:2}, //Nick Fury
-{Id:1009338, Row:2, Column:3}  //Hawkeye
+	{Id:1009351, Row:1, Column:1}, //Hulk
+	{Id:1009220, Row:1, Column:2}, //Captain America
+	{Id:1009368, Row:1, Column:3}, //Iron Man
+	{Id:1009664, Row:1, Column:4}, //Thor
+	{Id:1009189, Row:2, Column:1}, //Black Widow
+	{Id:1009471, Row:2, Column:2}, //Nick Fury
+	{Id:1009338, Row:2, Column:3},  //Hawkeye
+	{Id:1009407, Row:2, Column:4}  //Loki
 ]
-
-	rowCounter = 1;
-	columnCounter = 0;
-	itemsPerRow = 4;
 
 app.get('/', function(req, res, next){
 
@@ -51,7 +48,7 @@ app.get('/', function(req, res, next){
 
 	    var marvel = new Marvel({
 	    	publicKey: publicKey, 
-	    	privateKey:privateKey
+	    	privateKey: privateKey
 	    });
 
     	async.eachSeries(avengersList, function(item, callback){

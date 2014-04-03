@@ -1,6 +1,6 @@
 {
   "name": "gwab-hack",
-  "description": "Hack site for Windows Azure Bootcamp",
+  "description": "Hack site for Windows Azure Bootcamp using the Marvel API",
   "version": "0.0.1",
   "dependencies": {
     "express": "3.x",

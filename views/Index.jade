@@ -14,7 +14,7 @@ div.container
         div.gridster
             ul(style="width: 960px; position: relative;")
                 each item in Characters            
-                    li(data-row="#{item.DataRow}" data-col="#{item.DataColumn}" data-sizex="1" data-sizey="1" class="gw-s" style="background-image:url(#{item.CharacterImage})")
+                    li(data-row="#{item.DataRow}" data-col="#{item.DataColumn}" data-sizex="1" data-sizey="1" class="gw-s" style="background-image:url(#{item.CharacterImage})" data-name="#{item.CharacterName}" data-description="#{item.ChatacterDescription}" data-comics="#{item.CharacterComics}" data-series="#{item.CharacterSeries}")
 
 //Modal
 div#myModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
@@ -22,12 +22,14 @@ div#myModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLab
         div.modal-content
           div.modal-header
             button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
-            h4#myModalLabel.modal-title Modal title
+            h4#myModalLabel.modal-title
           div.modal-body
-            | hello
+            #name
+            #description
+            #comics
+            #series
           div.modal-footer
             button.btn.btn-default(type='button', data-dismiss='modal') Close
-            button.btn.btn-primary(type='button') Save changes
 
 include Shared/scripts.jade
 script(src='Project/Javascript/index.js')
@@ -50,5 +52,15 @@ script.
 
 script.
     $(document).on("dblclick", ".gw-s", function(){
+        var name = $(this).data('name');
+        var description = $(this).data('description');
+        var comics = $(this).data('comics');
+        var series = $(this).data('series');
+        
+        $("#myModelLabel").val( name );
+        $(".modal-body #description").html( description );
+        $(".modal-body #comics").html( comics );
+        $(".modal-body #series").html( series );
+
         $('#myModal').modal('toggle');
     });
