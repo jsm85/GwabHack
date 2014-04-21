@@ -12,11 +12,14 @@ div.navbar.navbar-default.navbar-fixed-top
 
 div.container
     h4.main-text Welcome to G.W.A.B Hack. A website that was put together in a couple of hours at the Global Windows Azure Bootcamp in London on the 29th March 2014. This site was built using Nodejs, the Marvel API and is hosted on Windows Azure. Double click on a character to find out more information!
+
     section.gridsterArea
         div.gridster
             ul(style="width: 960px; position: relative;")
                 each item in Characters            
                     li(data-row="#{item.DataRow}" data-col="#{item.DataColumn}" data-sizex="1" data-sizey="1" class="gw-s" style="background-image:url(#{item.CharacterImage})" data-name="#{item.CharacterName}" data-description="#{item.ChatacterDescription}" data-comics="#{item.CharacterComics}" data-series="#{item.CharacterSeries}")
+
+    h4.main-text Data provided by Marvel. © 2014 Marvel
 
 //Modal
 div#myModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
